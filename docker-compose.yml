@@ -1,0 +1,14 @@
+version: "2.18"
+
+services:
+  proyecto-backend-iud-micro:
+    container_name: proyect-backend-iud-micro
+    image: proyect-backend-iud-micro:v1
+    build:
+      context: .
+    ports:
+      - "4002:4002"
+    networks:
+      - proyectos-app-iud
+networks:
+  proyectos-app-iud:
