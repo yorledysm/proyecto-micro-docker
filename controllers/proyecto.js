@@ -11,14 +11,17 @@ const TipoProyecto = require('../models/tipoProyecto')
 
 
 
+
+
 // crear
 const createProyectos= async (req = request, 
     res = response) => {
         try{
+           
             const data = req.body
             console.log(data)
             const { cliente, etapa, tipoProyecto, universidad } = data;
-            // valida,os la informacion del cliente
+           
             const clienteDB = Cliente.findOne({
                 _id: cliente._id,
                
@@ -67,15 +70,16 @@ const createProyectos= async (req = request,
 const getProyectos = async (req = request, 
     res = response) => {
         try{
+            console.log('Petición...')
             const proyectoDB = await Proyecto.find()
                 .populate({
                     path: 'cliente'
                 })
                 .populate({
-                    path: 'etapas'
+                    path: 'etapa'
                 })
                 .populate({
-                    path: 'tipoProyectos'
+                    path: 'tipoProyecto'
                 })
                 .populate({
                     path: 'universidad'

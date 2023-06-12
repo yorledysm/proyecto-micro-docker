@@ -1,14 +1,40 @@
 version: "2.18"
-
 services:
-  proyecto-backend-iud-micro:
-    container_name: proyect-backend-iud-micro
-    image: proyect-backend-iud-micro:v1
+  proyectos-micro-backend:
+    container_name: proyectos-micro-backend
+    image: proyectos-micro-backend:v1
     build:
       context: .
     ports:
-      - "4002:4002"
+      - "4002" 
     networks:
-      - proyectos-app-iud
+      - proyectos-app
+      
+  proyectos-micro-backend-2:
+    container_name: proyectos-micro-backend-2
+    image: proyectos-micro-backend:v1
+    ports:
+      - "4002"  
+    networks:
+      - proyectos-app
+
+  proyectos-micro-backend-3:
+    container_name: proyectos-micro-backend-3
+    image: proyectos-micro-backend:v1
+    ports:
+      - "4002" 
+    networks:
+      - proyectos-app
+ 
+  balanceador-carga:
+    container_name: balanceador-carga
+    image: balanceador-carga:v1
+    build:
+      context: ./balanceador
+    ports:
+      - "4004:80"
+    networks:
+      - proyectos-app
+
 networks:
-  proyectos-app-iud:
+  proyectos-app:

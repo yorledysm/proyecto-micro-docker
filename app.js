@@ -10,15 +10,17 @@ app.use(cors({
 }))
 
 
-
+const clientes = require('./routes/cliente')
+const etapas = require('./routes/etapa')
 const proyectos = require('./routes/proyecto')
+const tipoProyectos = require('./routes/tipoProyecto')
+const universidades = require('./routes/universidad')
 
-
-
-
-
-
+app.use('/api/cliente', clientes)
+app.use('/api/etapa', etapas)
 app.use('/api/proyecto', proyectos)
+app.use('/api/tipoProyecto', tipoProyectos)
+app.use('/api/universidad', universidades)
 
 
 module.exports = app
